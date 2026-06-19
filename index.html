@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Planora - Your daily command center. Plan. Focus. Achieve.">
+    <title>Planora — Plan. Focus. Achieve.</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">📋</span>
+                    <h1>Planora</h1>
+                </div>
+                <p class="tagline">Plan. Focus. Achieve.</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#tasks" class="nav-item" data-page="tasks">
+                    <span class="nav-icon">✓</span>
+                    <span class="nav-text">Tasks</span>
+                </a>
+                <a href="#calendar" class="nav-item" data-page="calendar">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Calendar</span>
+                </a>
+                <a href="#habits" class="nav-item" data-page="habits">
+                    <span class="nav-icon">🔥</span>
+                    <span class="nav-text">Habits</span>
+                </a>
+                <a href="#goals" class="nav-item" data-page="goals">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Goals</span>
+                </a>
+                <a href="#notes" class="nav-item" data-page="notes">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-text">Notes</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-page="analytics">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="#settings" class="nav-item" data-page="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- DASHBOARD PAGE -->
+            <div id="dashboard" class="page active">
+                <!-- Pro Tip Banner -->
+                <div class="pro-tip">
+                    <p><strong>Pro tip:</strong> Block focused time in your calendar — your future self will thank you.</p>
+                </div>
+
+                <!-- Greeting Section -->
+                <div class="greeting-section">
+                    <h2 id="greeting">Good afternoon, welcome back</h2>
+                    <p id="current-date">Thursday, June 18</p>
+                </div>
+
+                <!-- Quote Section -->
+                <div class="quote-banner">
+                    <p class="quote-text" id="daily-quote">Discipline is choosing between what you want now and what you want most.</p>
+                    <p class="quote-author" id="quote-author">— Abraham Lincoln</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="tasks-done">0</div>
+                        <div class="stat-label">Done today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="habits-count"><span id="habits-completed">0</span>/<span id="habits-total">0</span></div>
+                        <div class="stat-label">Habits</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="goal-progress">0%</div>
+                        <div class="stat-label">Goal progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="productivity">0</div>
+                        <div class="stat-label">Productivity</div>
+                    </div>
+                </div>
+
+                <!-- Today's Tasks -->
+                <section class="section">
+                    <div class="section-header">
+                        <h3>Today's tasks</h3>
+                        <a href="#tasks" class="view-all">View all</a>
+                    </div>
+                    <div class="task-input-group">
+                        <input type="text" id="dashboard-task-input" class="task-input" placeholder="Add a task and press Enter...">
+                        <select id="dashboard-task-priority" class="task-priority">
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                            <option value="High">High</option>
+                        </select>
+                        <button id="dashboard-add-task" class="btn-add">Add</button>
+                    </div>
+                    <div id="dashboard-tasks-list" class="tasks-list">
+                        <p class="empty-state">Nothing planned. Add your first task above ✨</p>
+                    </div>
+                </section>
+
+                <!-- Goal Progress -->
+                <section class="section">
+                    <h3>Goal progress</h3>
+                    <div id="dashboard-goals" class="goals-container">
+                        <p class="empty-state">No goals yet. <a href="#goals" class="link">Create one</a></p>
+                    </div>
+                </section>
+
+                <!-- Today's Habits -->
+                <section class="section">
+                    <h3>Today's habits</h3>
+                    <div id="dashboard-habits" class="habits-container">
+                        <p class="empty-state">Start tracking <a href="#habits" class="link">habits</a>.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TASKS PAGE -->
+            <div id="tasks" class="page">
+                <h2>Tasks</h2>
+                <p class="page-subtitle" id="tasks-count">0 active · 0 completed</p>
+
+                <div class="task-input-group">
+                    <input type="text" id="task-input" class="task-input" placeholder="Add a task and press Enter...">
+                    <select id="task-priority" class="task-priority">
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                        <option value="High">High</option>
+                    </select>
+                    <button id="add-task-btn" class="btn-add">Add</button>
+                </div>
+
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="done">Done</button>
+                    <button class="filter-btn" data-filter="urgent">Urgent</button>
+                </div>
+
+                <div id="tasks-list" class="tasks-list">
+                    <p class="empty-state">No tasks yet. Create one above!</p>
+                </div>
+            </div>
+
+            <!-- CALENDAR PAGE -->
+            <div id="calendar" class="page">
+                <h2>Calendar</h2>
+                <p class="page-subtitle">Plan your days ahead</p>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month" class="btn-nav">←</button>
+                        <h3 id="month-year">June 2026</h3>
+                        <button id="next-month" class="btn-nav">→</button>
+                    </div>
+
+                    <div class="calendar-weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+
+                    <div id="calendar-days" class="calendar-days">
+                        <!-- Days will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="calendar-events">
+                    <h3>Events for <span id="selected-date">Today</span></h3>
+                    <div id="calendar-events-list" class="events-list">
+                        <p class="empty-state">No events scheduled</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HABITS PAGE -->
+            <div id="habits" class="page">
+                <h2>Habits</h2>
+                <p class="page-subtitle">Build consistency, one day at a time</p>
+
+                <div class="habit-input-group">
+                    <input type="text" id="habit-input" class="habit-input" placeholder="Add a new habit...">
+                    <button id="add-habit-btn" class="btn-add">Add Habit</button>
+                </div>
+
+                <div id="habits-list" class="habits-list">
+                    <p class="empty-state">No habits yet. Start with one!</p>
+                </div>
+            </div>
+
+            <!-- GOALS PAGE -->
+            <div id="goals" class="page">
+                <h2>Goals</h2>
+                <p class="page-subtitle">Set your vision, track your progress</p>
+
+                <div class="goal-input-group">
+                    <input type="text" id="goal-input" class="goal-input" placeholder="What's your goal?">
+                    <input type="date" id="goal-deadline" class="goal-deadline">
+                    <button id="add-goal-btn" class="btn-add">Add Goal</button>
+                </div>
+
+                <div id="goals-list" class="goals-list">
+                    <p class="empty-state">No goals yet. Dream big!</p>
+                </div>
+            </div>
+
+            <!-- NOTES PAGE -->
+            <div id="notes" class="page">
+                <h2>Notes</h2>
+                <p class="page-subtitle">Capture your thoughts and ideas</p>
+
+                <div class="note-input-group">
+                    <input type="text" id="note-title" class="note-title" placeholder="Note title...">
+                    <textarea id="note-content" class="note-content" placeholder="Write your note here..."></textarea>
+                    <button id="add-note-btn" class="btn-add">Save Note</button>
+                </div>
+
+                <div id="notes-list" class="notes-list">
+                    <p class="empty-state">No notes yet. Start writing!</p>
+                </div>
+            </div>
+
+            <!-- ANALYTICS PAGE -->
+            <div id="analytics" class="page">
+                <h2>Analytics</h2>
+                <p class="page-subtitle">Track your productivity and progress</p>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Weekly Overview</h3>
+                        <div id="weekly-chart" class="chart-placeholder">
+                            <p>Tasks completed this week: <strong id="weekly-tasks">0</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Habit Completion</h3>
+                        <div id="habit-chart" class="chart-placeholder">
+                            <p>Active habits: <strong id="active-habits">0</strong></p>
+                            <p>Completion rate: <strong id="habit-rate">0%</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Goal Progress</h3>
+                        <div id="goal-chart" class="chart-placeholder">
+                            <p>Total goals: <strong id="total-goals">0</strong></p>
+                            <p>Completed: <strong id="completed-goals">0</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Monthly Stats</h3>
+                        <div id="monthly-chart" class="chart-placeholder">
+                            <p>Total tasks: <strong id="monthly-tasks">0</strong></p>
+                            <p>Average daily tasks: <strong id="daily-avg">0</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS PAGE -->
+            <div id="settings" class="page">
+                <h2>Settings</h2>
+                <p class="page-subtitle">Make Planora yours</p>
+
+                <section class="settings-section">
+                    <h3>Appearance</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label for="dark-mode">Dark mode</label>
+                            <p class="setting-description">Use a dimmer interface</p>
+                        </div>
+                        <input type="checkbox" id="dark-mode" class="toggle" checked>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <h3>AI Assistance</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label for="ai-suggestions">AI Suggestions</label>
+                            <p class="setting-description">Smart suggestions to kickstart your day</p>
+                        </div>
+                        <input type="checkbox" id="ai-suggestions" class="toggle" checked>
+                    </div>
+                    <button id="suggest-tasks-btn" class="btn-secondary">Suggest 5 tasks</button>
+                </section>
+
+                <section class="settings-section">
+                    <h3>Focus Mode</h3>
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <label for="focus-timer">Pomodoro Timer (minutes)</label>
+                        </div>
+                        <input type="number" id="focus-timer" class="input-number" value="25" min="5" max="60">
+                    </div>
+                    <button id="start-focus-btn" class="btn-primary">Start Focus Session</button>
+                </section>
+
+                <section class="settings-section danger-zone">
+                    <h3>Danger zone</h3>
+                    <p><strong id="local-storage-count">0</strong> tasks stored locally on this device.</p>
+                    <button id="clear-data-btn" class="btn-danger">Erase all data</button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Task Details -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-task-title">Task Details</h3>
+            <div id="modal-task-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
